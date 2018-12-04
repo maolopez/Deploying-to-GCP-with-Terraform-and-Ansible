@@ -1,6 +1,6 @@
 # Deploying-to-GCP-with-Terraform-and-Ansible
 
-**Purpose** The first step is deploying an Ansible-Master VM on your GCP project from your local machine and after that a second step is for that Ansible-Master VM to deploy a third VM on GCP internally. The idea of the whole ecercise is to do it totally automated.
+**Purpose** The first step is deploying an Ansible-Master VM on your GCP project from your local machine and after that a second step is for that Ansible-Master VM to deploy a third VM on GCP internally. The idea of the whole exercise is to do it totally automated.
 
 ### Requirements before to start:
 

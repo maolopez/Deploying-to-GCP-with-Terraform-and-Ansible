@@ -1,0 +1,25 @@
+#!/bin/sh
+sudo useradd -c ansible -d /home/ansible -s /bin/bash ansible
+sudo passwd -d ansible
+sudo usermod -aG wheel ansible
+sudo su - ansible
+sudo yum -y install epel-release
+sudo yum -y install git python openssl ansible
+sudo yum -y install python-pip PyYAML python-jinja2 python-httplib2 python-keyczar python-paramiko
+sudo yum -y install python-devel MySQL-python sshpass libffi-devel openssl-devel
+sudo pip install --upgrade pip
+sudo pip install apache-libcloud
+sudo mkdir -p /opt/ansible/inventory
+sudo chmod -R 755 /opt/ansible
+sudo chown -R ansible:ansible /opt/ansible
+git clone https://github.com/ansible/ansible
+sleep 15
+sudo cp ansible/contrib/inventory/gce.py /opt/ansible/inventory/
+sudo cp ansible/contrib/inventory/gce.ini /opt/ansible/inventory/
+sudo chown -R ansible:ansible /opt/ansible/inventory/gce.py
+sudo chown -R ansible:ansible /opt/ansible/inventory/gce.ini
+cd /opt/ansible/inventory
+python -mjson.tool service-account.json
+export GCE_INI_PATH=/opt/ansible/inventory/gce.ini
+sudo sed -i '/remote_user = root/s/#//' /etc/ansible/ansible.cfg
+#place service-account.json in /opt/ansible/inventory/

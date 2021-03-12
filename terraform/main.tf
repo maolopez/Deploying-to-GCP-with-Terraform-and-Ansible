@@ -5,10 +5,14 @@ terraform {
 locals {
   project       = var.project
   projectRegion = var.region
+  zone          = var.zone
 }
 
+resource "google_compute_address" "ansible_public" {
+  name = "ipv4-address"
+}
 
-resource "google_compute_instance" "vm_instance" {
+resource "google_compute_instance" "ansible_instance" {
     name            = "ansible-master"
     machine_type    = var.machine_type
     boot_disk {
@@ -20,6 +24,7 @@ resource "google_compute_instance" "vm_instance" {
     network_interface {
         network     = "default"
         access_config = {
+          nat_ip = google_compute_address.ansible_public.address
         }
     }
     metadata_startup_script = file("master-ansible-start")
@@ -34,5 +39,3 @@ resource "google_project_service" "compute_googleapis" {
   service = "compute.googleapis.com"
   disable_dependent_services = true
 }
-
-

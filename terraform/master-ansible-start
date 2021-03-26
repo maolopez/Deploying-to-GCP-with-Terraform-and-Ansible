@@ -3,10 +3,10 @@ sudo useradd -c ansible -d /home/ansible -s /bin/bash ansible
 sudo passwd -d ansible
 sudo usermod -aG wheel ansible
 sudo su - ansible
-sudo yum -y install epel-release
-sudo yum -y install git python openssl ansible
-sudo yum -y install python-pip PyYAML python-jinja2 python-httplib2 python-keyczar python-paramiko
-sudo yum -y install python-devel MySQL-python sshpass libffi-devel openssl-devel
+sudo yum -y install epel-release > /tmp/1-epel-release.txt
+sudo yum -y install git python openssl ansible > /tmp/2-git-python-ssl-ansible.txt
+sudo yum -y install python-pip PyYAML python-jinja2 python-httplib2 python-keyczar python-paramiko > /tmp/3-paramiko.txt
+sudo yum -y install python-devel MySQL-python sshpass libffi-devel openssl-devel > /tmp/4-devel.txt
 sudo pip install --upgrade pip
 sudo pip install apache-libcloud
 sudo mkdir -p /opt/ansible/inventory

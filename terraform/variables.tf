@@ -1,5 +1,5 @@
 variable "project" { 
-  default = "playground-s-11-0a0d5e9e"
+  default = "playground-s-11-4e389324"
 }
 
 variable "region" {
@@ -14,6 +14,10 @@ variable "cidr" {
   default = "10.0.0.0/16" 
 }
 
+variable "subnet" {
+  default = "10.128.128.192/24"
+}
+
 variable "machine_type" { 
   default = "f1-micro"
 }
@@ -23,5 +27,5 @@ variable "image" {
 }
 
 variable "email" { 
-  default = "terraform-deployments@playground-s-11-0a0d5e9e.iam.gserviceaccount.com"
+  default = "terraform-deployments@playground-s-11-4e389324.iam.gserviceaccount.com"
 }

@@ -13,22 +13,20 @@ locals {
   zone     = var.zone
   enabled_google_api = toset([
     "compute.googleapis.com",
-    "serviceusage.googleapis.com"])
+    "serviceusage.googleapis.com",
+    "cloudresourcemanager.googleapis.com"])
 }
 
-resource "google_compute_network" "default" {
-  name = "default"
-}
-
-resource "google_compute_subnetwork" "default" {
-  name          = "default"
-  ip_cidr_range = "10.128.0.0/20"
-  region        = var.region
-  network       = google_compute_network.default.id
+resource "google_project_service" "enable_googleapis" {
+  for_each = local.enabled_google_api
+  project = var.project
+  service = each.value
+  disable_dependent_services = false
+  disable_on_destroy = false
 }
 
 resource "google_compute_address" "ansible_static" {
-  name = "ipv4-address"
+  name = "ansible-address"
   address_type = "EXTERNAL"
   region = var.region
 }
@@ -43,8 +41,8 @@ resource "google_compute_instance" "ansible_instance" {
     }
     
     network_interface {
-        network     = google_compute_network.default.id
-        subnetwork  = google_compute_subnetwork.default.id
+        network     = "default"
+        subnetwork  = "default"
         access_config {
           nat_ip = google_compute_address.ansible_static.address
         }
@@ -55,10 +53,3 @@ resource "google_compute_instance" "ansible_instance" {
     scopes = ["cloud-platform"]
     } 
   }
-
-resource "google_project_service" "enable_googleapis" {
-  for_each = local.enabled_google_api
-  project = var.project
-  service = each.value
-  disable_dependent_services = true
-}

@@ -1,5 +1,5 @@
 variable "project" { 
-  default = "playground-s-11-f76abdf7"
+  default = "playground-s-11-0a0d5e9e"
 }
 
 variable "region" {
@@ -19,9 +19,9 @@ variable "machine_type" {
 }
 
 variable "image" { 
-  default = "centos-cloud/centos-7-v12345678"
+  default = "centos-cloud/centos-7-v20200403"
 }
 
 variable "email" { 
-  default = "terraform-deployments@project-123456.iam.gserviceaccount.com"
+  default = "terraform-deployments@playground-s-11-0a0d5e9e.iam.gserviceaccount.com"
 }

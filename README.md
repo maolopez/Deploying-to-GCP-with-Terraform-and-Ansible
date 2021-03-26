@@ -13,3 +13,4 @@
 7. In ansible-vm.yml update: projec_id, service_account_email.
 8. Write service_account_email's keys on service-account.json.
 9. Write terraform-deployments@project-123456.iam.gserviceaccount.com's keys on terraform-key.json.
+10. More information here https://devopscube.com/ansible-dymanic-inventry-google-cloud/ 

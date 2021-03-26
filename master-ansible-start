@@ -12,10 +12,10 @@ sudo pip install apache-libcloud
 sudo mkdir -p /opt/ansible/inventory
 sudo chmod -R 755 /opt/ansible
 sudo chown -R ansible:ansible /opt/ansible
-git clone https://github.com/ansible/ansible
+git clone https://github.com/ansible-collections/community.google.git
 sleep 15
-sudo cp ansible/contrib/inventory/gce.py /opt/ansible/inventory/
-sudo cp ansible/contrib/inventory/gce.ini /opt/ansible/inventory/
+sudo cp community.google/scripts/inventory/gce.py /opt/ansible/inventory/
+sudo cp community.google/scripts/inventory/gce.ini /opt/ansible/inventory/
 sudo chown -R ansible:ansible /opt/ansible/inventory/gce.py
 sudo chown -R ansible:ansible /opt/ansible/inventory/gce.ini
 cd /opt/ansible/inventory

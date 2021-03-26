@@ -1,0 +1,42 @@
+- name: Create instance(s)
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars:
+    gcp_cred_kind: serviceaccount
+    service_account_email: 196602256475-compute@developer.gserviceaccount.com
+    service_account_file: /opt/ansible/inventory/service-account.json
+    project_id: playground-s-11-0a0d5e9e
+    region: "us-central1"
+    zone: "us-central1-c"
+    machine_type: f1-micro
+    image: centos-7
+
+  tasks:
+
+   - name: Launch instances
+     gce:
+         instance_names: gitlab_runner
+         machine_type: "{{ machine_type }}"
+         image: "{{ image }}"
+         service_account_email: "{{ service_account_email }}"
+         service_account_file: "{{ credentials_file }}"
+         project_id: "{{ project_id }}"
+   - name: create a address
+     gcp_compute_address:
+         name: 'address-instance'
+         region: "{{ region }}"
+         project_id: "{{ project_id }}"
+         auth_kind: "{{ gcp_cred_kind }}"
+         service_account_file: "{{ credentials_file }}"
+         scopes:
+           - https://www.googleapis.com/auth/compute
+         state: present
+     register: address
+   - name: deploy | Copying deploy-gitlab-runner-script.sh
+     template:
+       src: "deploy-gitlab-runner-script.sh"
+       dest: "/$(pwd)/deploy-gitlab-runner-script.sh"
+       mode: 0755
+     become: yes

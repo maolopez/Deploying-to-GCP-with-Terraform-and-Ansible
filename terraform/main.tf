@@ -16,7 +16,18 @@ locals {
     "serviceusage.googleapis.com"])
 }
 
-resource "google_compute_address" "iansible_static" {
+resource "google_compute_network" "default" {
+  name = "default"
+}
+
+resource "google_compute_subnetwork" "default" {
+  name          = "default"
+  ip_cidr_range = "10.128.0.0/20"
+  region        = var.region
+  network       = google_compute_network.default.id
+}
+
+resource "google_compute_address" "ansible_static" {
   name = "ipv4-address"
   address_type = "EXTERNAL"
   region = var.region
@@ -32,7 +43,11 @@ resource "google_compute_instance" "ansible_instance" {
     }
     
     network_interface {
-        network     = "default"
+        network     = google_compute_network.default.id
+        subnetwork  = google_compute_subnetwork.default.id
+        access_config {
+          nat_ip = google_compute_address.ansible_static.address
+        }
     }
     metadata_startup_script = file("master-ansible-start")
     service_account {

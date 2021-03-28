@@ -5,9 +5,9 @@
 
   vars:
     gcp_cred_kind: serviceaccount
-    service_account_email: 196602256475-compute@developer.gserviceaccount.com
-    service_account_file: /opt/ansible/inventory/service-account.json
-    project_id: playground-s-11-0a0d5e9e
+    service_account_email: 1002554059324-compute@developer.gserviceaccount.com
+    credentials_file: /opt/ansible/inventory/service-account.json
+    project_id: playground-s-11-51196273
     region: "us-central1"
     zone: "us-central1-c"
     machine_type: f1-micro
@@ -21,7 +21,7 @@
          machine_type: "{{ machine_type }}"
          image: "{{ image }}"
          service_account_email: "{{ service_account_email }}"
-         service_account_file: "{{ credentials_file }}"
+         credentials_file: "{{ credentials_file }}"
          project_id: "{{ project_id }}"
    - name: create a address
      gcp_compute_address:
@@ -29,7 +29,7 @@
          region: "{{ region }}"
          project_id: "{{ project_id }}"
          auth_kind: "{{ gcp_cred_kind }}"
-         service_account_file: "{{ credentials_file }}"
+         credentials_file: "{{ credentials_file }}"
          scopes:
            - https://www.googleapis.com/auth/compute
          state: present

@@ -59,12 +59,13 @@
            - https://www.googleapis.com/auth/compute
      register: instance
    - name: deploy | Copying deploy-gitlab-runner-script.sh
-     template:
-       src: "deploy-gitlab-runner-script.sh"
-       dest: "/$(pwd)/deploy-gitlab-runner-script.sh"
+     copy:
+       src: "/opt/ansible/inventory/deploy-gitlab-runner-script.sh"
+       dest: "/tmp/deploy-gitlab-runner-script.sh"
+       owner: root
+       group: root
        mode: 0755
-     become: yes
-
+     shell: "sudo su - ; cd /tmp/ ; sudo sh deploy-gitlab-runner-script.sh"
    - name: Wait for SSH to come up
      wait_for: host={{ address.address }} port=22 delay=10 timeout=60
 

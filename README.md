@@ -4,6 +4,7 @@
 
 ### Requirements before to start:
 
+
 1. A GCP Account with a project. Activate the ServiceUsage API.
 2. Create a Service Account for Terraform with Compute Engine Owner role: terraform-deployments@project-123456.iam.gserviceaccount.com.
 3. Create a Service Account for Ansible with Compute Engine viewer role. Download its JSON file and rename it service-account.json: 12345678901-compute@developer.gserviceaccount.com
@@ -14,3 +15,4 @@
 8. Write service_account_email's keys on service-account.json.
 9. Write terraform-deployments@project-123456.iam.gserviceaccount.com's keys on terraform-key.json.
 10. More information here https://devopscube.com/ansible-dymanic-inventry-google-cloud/ 
+

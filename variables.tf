@@ -3,11 +3,11 @@ variable "project" {
 }
 
 variable "region" {
-  default = "us-central1" 
+  default = "northamerica-northeast1" 
 }
 
 variable "zone" {
-  default = "us-central1-c" 
+  default = "northamerica-northeast1-a" 
 }
 
 variable "cidr" {
@@ -15,11 +15,11 @@ variable "cidr" {
 }
 
 variable "subnet" {
-  default = "10.128.128.192/24"
+  default = "10.162.128.192/24"
 }
 
 variable "machine_type" { 
-  default = "f1-micro"
+  default = "e2-medium"
 }
 
 variable "image" { 

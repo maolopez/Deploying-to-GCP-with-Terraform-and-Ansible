@@ -23,9 +23,10 @@ ansible --version > /tmp/5-ansible-version.txt
 cd /opt/ansible/inventory
 #python3 -mjson.tool service-account.json
 ansible-inventory --list -i gcp.yaml > gcp.yaml
+sudo chown -R ansible:ansible gcp.yaml
 export GCE_INI_PATH=/opt/ansible/inventory/gce.ini
 sudo sed -i '/remote_user = root/s/#//' /etc/ansible/ansible.cfg
 sudo sed -i '/\[inventory\]/a inventory=/opt/ansible/inventory/gcp.yaml' /etc/ansible/ansible.cfg
-sudo sed -i '/\[defaults\]/a interpreter_python=/PATH/TO/PYTHON/INTERPRETER' /etc/ansible/ansible.cfg
-ansible-playbook ansible-vm.yml
+sudo sed -i '/\[defaults\]/a interpreter_python=/usr/bin/python3' /etc/ansible/ansible.cfg
+ansible-playbook ansible-vm.yml -e 'ansible_python_interpreter=/usr/bin/python3'
 #place service-account.json in /opt/ansible/inventory/

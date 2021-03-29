@@ -51,5 +51,14 @@ resource "google_compute_instance" "ansible_instance" {
     service_account {
     email = var.email
     scopes = ["cloud-platform"]
-    } 
+    }
+    /*provisioner "file" {
+        source = "ansible-vm.yml"
+        destination = "/opt/ansible/inventory/ansible-vm.yml"
+        connection {
+            type = "ssh"
+            user = "ansible"
+            host = self.network_interface
+        }
+    }*/
   }

@@ -3,23 +3,30 @@ sudo useradd -c ansible -d /home/ansible -s /bin/bash ansible
 sudo passwd -d ansible
 sudo usermod -aG wheel ansible
 sudo su - ansible
-sudo yum -y install epel-release > /tmp/1-epel-release.txt
-sudo yum -y install git python openssl ansible > /tmp/2-git-python-ssl-ansible.txt
-sudo yum -y install python-pip PyYAML python-jinja2 python-httplib2 python-keyczar python-paramiko > /tmp/3-paramiko.txt
-sudo yum -y install python-devel MySQL-python sshpass libffi-devel openssl-devel > /tmp/4-devel.txt
-sudo pip install --upgrade pip
-sudo pip install apache-libcloud
+sudo yum -y upgrade > /tmp/1-yum.txt
+sudo yum -y install git python3 ansible > /tmp/2-git-python-ansible.txt
+sudo pip3 install requests google-auth > /tmp/3-google-auth.txt
+sudo pip3 install apache-libcloud > /tmp/4-apache-libcloud.txt
 sudo mkdir -p /opt/ansible/inventory
 sudo chmod -R 755 /opt/ansible
 sudo chown -R ansible:ansible /opt/ansible
-git clone https://github.com/ansible/ansible
+git clone https://github.com/ansible-collections/community.google.git
 sleep 15
-sudo cp ansible/contrib/inventory/gce.py /opt/ansible/inventory/
-sudo cp ansible/contrib/inventory/gce.ini /opt/ansible/inventory/
-sudo chown -R ansible:ansible /opt/ansible/inventory/gce.py
-sudo chown -R ansible:ansible /opt/ansible/inventory/gce.ini
+sudo cp community.google/scripts/inventory/gce.* /opt/ansible/inventory/
+sudo chown -R ansible:ansible /opt/ansible/inventory/gce.*
+git clone https://github.com/maolopez/Deploying-to-GCP-with-Terraform-and-Ansible.git
+sudo cp Deploying-to-GCP-with-Terraform-and-Ansible/ansible-vm.yml /opt/ansible/inventory/
+sudo cp Deploying-to-GCP-with-Terraform-and-Ansible/deploy-gitlab-runner-script.sh /opt/ansible/inventory/
+sudo chown -R ansible:ansible /opt/ansible/inventory/ansible-vm.yml
+sudo chown -R ansible:ansible /opt/ansible/inventory/deploy-gitlab-runner-script.sh
+ansible --version > /tmp/5-ansible-version.txt
 cd /opt/ansible/inventory
-python -mjson.tool service-account.json
+#python3 -mjson.tool service-account.json
+ansible-inventory --list -i gcp.yaml > gcp.yaml
+sudo chown -R ansible:ansible gcp.yaml
 export GCE_INI_PATH=/opt/ansible/inventory/gce.ini
 sudo sed -i '/remote_user = root/s/#//' /etc/ansible/ansible.cfg
+sudo sed -i '/\[inventory\]/a inventory=/opt/ansible/inventory/gcp.yaml' /etc/ansible/ansible.cfg
+sudo sed -i '/\[defaults\]/a interpreter_python=/usr/bin/python3' /etc/ansible/ansible.cfg
+ansible-playbook ansible-vm.yml -e 'ansible_python_interpreter=/usr/bin/python3'
 #place service-account.json in /opt/ansible/inventory/

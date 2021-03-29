@@ -1,14 +1,22 @@
 #!/usr/bin
 
-yum upgrade -y > tmp/1-yum.txt
-curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | sudo bash > tmp/2-curl.txt
-yum install gitlab-runner -y > tmp/3-runner.txt
+sudo useradd -c ansible -d /home/ansible -s /bin/bash ansible
+sudo passwd -d ansible
+sudo usermod -aG wheel ansible
+sudo su - ansible
+sudo yum upgrade -y > /tmp/1-yum.txt
+curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | sudo bash > /tmp/2-curl.txt
+sudo yum install gitlab-runner -y > /tmp/3-runner.txt
 chmod u+w /etc/sudoers
 sed -i '$ a gitlab-runner ALL=(ALL) NOPASSWD: ALL' /etc/sudoers
 chmod u-w /etc/sudoers
-yum install docker -y > /tmp/4-docker.txt
-systemctl enable docker
-systemctl start docker
+sudo yum install docker -y > /tmp/4-docker.txt
+service docker enable
+service docker start
+groupadd docker
+usermod -aG docker ansible
+service docker stop
+service docker start
 gitlab-runner register -n \
   --url https://gitlab.example.com/ \
   --registration-token your-token \

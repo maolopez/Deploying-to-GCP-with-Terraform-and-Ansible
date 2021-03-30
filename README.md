@@ -17,3 +17,4 @@
 10. Before terraform init, plan and apply there is an important step. What is it?
 11. More information here https://devopscube.com/ansible-dymanic-inventry-google-cloud/ 
 
+

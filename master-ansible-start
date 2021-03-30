@@ -7,6 +7,7 @@ sudo yum -y upgrade > /tmp/1-yum.txt
 sudo yum -y install git python3 ansible > /tmp/2-git-python-ansible.txt
 sudo pip3 install requests google-auth > /tmp/3-google-auth.txt
 sudo pip3 install apache-libcloud > /tmp/4-apache-libcloud.txt
+sudo yum install -y libselinux-python > /tmp/5-libselinux.txt
 sudo mkdir -p /opt/ansible/inventory
 sudo chmod -R 755 /opt/ansible
 sudo chown -R ansible:ansible /opt/ansible
@@ -15,11 +16,16 @@ sleep 15
 sudo cp community.google/scripts/inventory/gce.* /opt/ansible/inventory/
 sudo chown -R ansible:ansible /opt/ansible/inventory/gce.*
 git clone https://github.com/maolopez/Deploying-to-GCP-with-Terraform-and-Ansible.git
+cd Deploying-to-GCP-with-Terraform-and-Ansible
+git checkout develop > /tmp/6-checkout.txt
+cd ..
 sudo cp Deploying-to-GCP-with-Terraform-and-Ansible/ansible-vm.yml /opt/ansible/inventory/
 sudo cp Deploying-to-GCP-with-Terraform-and-Ansible/deploy-gitlab-runner-script.sh /opt/ansible/inventory/
+sudo cp Deploying-to-GCP-with-Terraform-and-Ansible/service-account.json /opt/ansible/inventory/
 sudo chown -R ansible:ansible /opt/ansible/inventory/ansible-vm.yml
 sudo chown -R ansible:ansible /opt/ansible/inventory/deploy-gitlab-runner-script.sh
-ansible --version > /tmp/5-ansible-version.txt
+sudo chown -R ansible:ansible /opt/ansible/inventory/service-account.json
+ansible --version > /tmp/7-ansible-version.txt
 cd /opt/ansible/inventory
 #python3 -mjson.tool service-account.json
 ansible-inventory --list -i gcp.yaml > gcp.yaml

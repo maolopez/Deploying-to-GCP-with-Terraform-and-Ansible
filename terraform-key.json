@@ -1,12 +1,12 @@
 {
   "type": "service_account",
-  "project_id": "ansible-123456",
-  "private_key_id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nxxxxxxxxxxxxxxxxx\n-----END PRIVATE KEY-----\n",
-  "client_email": "terraform-deployments@project-123456.iam.gserviceaccount.com",
-  "client_id": "1111111111111111111111",
+  "project_id": "playground-s-11-361e32bc",
+  "private_key_id": "d3d8bd9813b342ed7eba5c6d4f5be8d67944a6fc",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCbYXELMU96GFfL\nibUPNWnpzP7H7Y3+coMDOQp458isTiyUKAWqVZFz3CHdDYH55T3KihZ+JlNNukwC\n1nhcd4gb84ZcejNJdCaYJ7dJT25NhnSLlJ/dRHgnzVlfyLly6dB5dRl96iat5Y5Y\n+Z7klOSL0EGSd6ljUYkP2GsIoyESGbEFJB4YRdKBbaBlRgQJKbP2XmIfMG77uPRG\nUAzIb+Vs02K2dg0eBxVgNp9yjA0UX+WVlDQGSNj0UGeZmSQhWWS+7rJ8mhUJIaDw\noExbrvZgsxRv0OsxIRIp9PMIk0EygbfVUCg782Mk+3RbwjGX3lT3xgqSDKLvch4h\nh7/jLjl7AgMBAAECggEAGtvKnx0seFX54yCQMCtS/gul5OhO2bNwqx9yjHjAauxu\nb0PFyu5UoLrmDaB2nbw/JKIfBjpYvwBbgEgTcSRmXjKHwLeM4v8VZsrCt4Tn87Ww\nsqoDwktCG9s2vkRjrhX1p/EScX4GppueMgogKbIFGZfrpcZSfO0MrLUDt2//WPHc\nAKQ0QC+4TprVjqybljkZYamoDSbKUvyrYNMOtTtchO6Me7L8BN5LtZgCZ1ua09a9\nQvIIEuLxyt8aW5XW38rIZb+K6ll9+pyHz3ICGAh46A+cN8WZk1fE90G72aawm29Y\nssdA7+BjJd85HvAqn7T3tRCBn2ogR0XhqmBF7314jQKBgQDHskO23au45FZyj1Tt\nNsX4TXjs4DntE/h8sp+1Ai7Bh2/HHvy2409DhGfatl7yKApX5XevDzXAETc9yQ6v\nGDSoZMP81jBRrdmmd2OpS5xAgNqsg3rdfDNsQcpD7DGe8kk3Esl+nmDBrOCgL+8g\nOHDDLoueUK90QioDkfixMgBtlQKBgQDHMIu1dxjc63IKmv3RMLhe+t6G4089EN5p\njhjp7lGkbRZ4y/JsL8A/PB1ovfvcNyGzTERzC//z6OtriUkJiN/aaBxvcN6b+jkc\nXBEuLKKjPd/su8nqkX+UAkBgJSvJ3LNjHrQuXSCrSxqjCi5Zvszd3G578KZq7NLB\nH7ZHvuumzwKBgQCQRR6cl0s/mV9HBnwRoHen6riJUXkn6TylQhsVl00WLfW4Qo/K\nxS/3lEm/fe/cPMc0NyifRXrMluN09LNyFie83IenO0rPR60tkaVjoqdxBmZ1Kcvz\nBY7VEDbDmXlD3sC8VAtUObGnWnEx6U911LDKoe7mYl5PvJlD2Qp1Ya1jfQKBgQCL\nuY4HGSgjsDUrI1XwrBBo7+mxDTrER1T9DmSDlF1Izgz5Z3cCVOyybuTiWIKYE0Rc\nlZ9eZIiC/FxH7uGBArakamun8LD3ESuGrT6P+VeM0xaE5aXaGX44wOuPhgOVcm+T\nlDIoY8NK5UAmJjolUiY7aylFX6YdU0rzld8zrMV5GQKBgQCpLe/YPd6liPWuw3UP\nQXNChqfM7pvtut0NSbS6RGudCCoCYAujs9X16WWNaonVPn8jela7HQzB91vpBgCe\nMTYUuvx0pRbJsY939Nt4gZ2F8xQnBYmTvFNUN6zP5JEOb5vn4WLbzPqj2zIPB3Lr\nKcXYiXTsyIC9uUrSKIBy5jYgTw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "terraform-deployments@playground-s-11-361e32bc.iam.gserviceaccount.com",
+  "client_id": "103309964527280882079",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
   "token_uri": "https://oauth2.googleapis.com/token",
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ansible-provisioning%account.iam.gserviceaccount.com"
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/terraform-deployments%40playground-s-11-361e32bc.iam.gserviceaccount.com"
 }

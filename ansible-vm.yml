@@ -3,9 +3,9 @@
   gather_facts: no
   vars:
     gcp_cred_kind: serviceaccount
-    service_account_email: 410372205689-compute@developer.gserviceaccount.com
+    service_account_email: 954671700559-compute@developer.gserviceaccount.com
     credentials_file: /opt/ansible/inventory/service-account.json
-    gcp_project: playground-s-11-f8ec7827
+    gcp_project: playground-s-11-361e32bc
     region: "northamerica-northeast1"
     zone: "northamerica-northeast1-a"
     machine_type: e2-medium

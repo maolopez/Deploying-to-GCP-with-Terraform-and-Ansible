@@ -16,5 +16,6 @@
 9. Write terraform-deployments@project-123456.iam.gserviceaccount.com's keys on terraform-key.json.
 10. Before terraform init, plan and apply there is an important step. What is it?
 11. More information here https://devopscube.com/ansible-dymanic-inventry-google-cloud/ 
+12. Check it out working with GitLab CICD pipeline here https://gitlab.com/maolopez1/Deploying-to-GCP-with-Terraform-and-Ansible
 
 
